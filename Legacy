@@ -1,0 +1,144 @@
+OLD LEXER CODE
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
+
+public class Parser
+{
+    //TOKENS
+    public static String keywords[] =
+            {
+                    "println"
+            };
+    public static String symbols[] =
+            {
+                    "+",
+                    "-",
+                    "*",
+                    "/",
+                    "(",
+                    ")",
+                    ";",
+                    "="
+            };
+    public static String integers[] =
+            {
+            String.valueOf('0'),
+            String.valueOf('1'),
+            String.valueOf('2'),
+            String.valueOf('3'),
+            String.valueOf('4'),
+            String.valueOf('5'),
+            String.valueOf('6'),
+            String.valueOf('7'),
+            String.valueOf('8'),
+            String.valueOf('9')
+            };
+    public static String WS[] =
+            {
+                    " "
+            };
+    public static String[] alphabet =
+    {
+            String.valueOf('A'),
+            String.valueOf('B'),
+            String.valueOf('C'),
+            String.valueOf('D'),
+            String.valueOf('E'),
+            String.valueOf('F'),
+            String.valueOf('G'),
+            String.valueOf('H'),
+            String.valueOf('I'),
+            String.valueOf('J'),
+            String.valueOf('K'),
+            String.valueOf('L'),
+            String.valueOf('M'),
+            String.valueOf('N'),
+            String.valueOf('O'),
+            String.valueOf('P'),
+            String.valueOf('Q'),
+            String.valueOf('R'),
+            String.valueOf('S'),
+            String.valueOf('T'),
+            String.valueOf('U'),
+            String.valueOf('V'),
+            String.valueOf('W'),
+            String.valueOf('X'),
+            String.valueOf('Y'),
+            String.valueOf('Z'),
+            String.valueOf('a'),
+            String.valueOf('b'),
+            String.valueOf('c'),
+            String.valueOf('d'),
+            String.valueOf('e'),
+            String.valueOf('f'),
+            String.valueOf('g'),
+            String.valueOf('h'),
+            String.valueOf('i'),
+            String.valueOf('j'),
+            String.valueOf('k'),
+            String.valueOf('l'),
+            String.valueOf('m'),
+            String.valueOf('n'),
+            String.valueOf('o'),
+            String.valueOf('p'),
+            String.valueOf('q'),
+            String.valueOf('r'),
+            String.valueOf('s'),
+            String.valueOf('t'),
+            String.valueOf('u'),
+            String.valueOf('v'),
+            String.valueOf('w'),
+            String.valueOf('x'),
+            String.valueOf('y'),
+            String.valueOf('z')
+    };
+
+    //Lexer and Parser
+
+    public static ArrayList<String> Lexer(String data)
+    {
+        ArrayList<String> a = new ArrayList<String>();
+        int currindex = 0;
+        int temp = 1;
+        String tempint;
+
+        while(currindex != data.length())
+        {
+            if(Arrays.asList(integers).contains(String.valueOf(data.charAt(currindex))))
+            {
+                tempint = String.valueOf(data.charAt(currindex));
+                while(Arrays.asList(integers).contains(String.valueOf(data.charAt(currindex+temp))))
+                {
+                    tempint += String.valueOf(data.charAt(currindex+temp));
+                    temp++;
+                    if(temp+currindex == data.length() || temp+currindex > data.length())
+                    {
+                        System.out.println("Broken the loop");
+                        //currindex += 1;
+                        break;
+                    }
+                }
+
+                a.add(tempint);
+                currindex += 1;
+            }
+            else if(String.valueOf(data.charAt(currindex)).equals(" "))
+            {
+                currindex += 1;
+                System.out.println("Skipped WS");
+            }
+        }
+
+        return a;
+    }
+
+    public static ArrayList<String> Parser(ArrayList<String> data)
+    {
+
+
+        return null;
+    }
+
+}

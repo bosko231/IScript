@@ -11,7 +11,8 @@ public class Shell
             Scanner sc = new Scanner(System.in);
             System.out.println("Inbascript>>: ");
             code = sc.nextLine();
-            System.out.println(Parser.Tokenizer(code));
+            Lexer.lexer(code);
+
 
         }
         System.out.println("Exiting...");
