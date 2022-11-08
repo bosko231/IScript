@@ -23,25 +23,25 @@ public class Lexer
         {
             if(Arrays.asList(nums).contains(String.valueOf(data.charAt(current_char))))
             {
-                System.out.println("INT: "+data.charAt(current_char));
+                //System.out.println("INT: "+data.charAt(current_char));
                 Final.add(String.valueOf(data.charAt(current_char)));
                 current_char += 1;
                 check_for_int(data, current_char);
             }
             else if(String.valueOf(data.charAt(current_char)).equals(" "))
             {
-                System.out.println("END");
+                //System.out.println("END");
                 current_char += 1;
                 check_for_int(data, current_char);
             }
             else
             {
-                System.out.println("END");
+                //System.out.println("END");
                 Final.add("END");
 
                 if(current_char == data.length())
                 {
-                    System.out.println("END OF LINE");
+                    //System.out.println("END OF LINE");
                     Final.add("ENDOFLINE");
                     System.out.println(Final);
                 }
@@ -53,17 +53,21 @@ public class Lexer
         }
         catch(Exception e)
         {
-            System.out.println("END");
+            //System.out.println("END");
             Final.add("END");
         }
+        String[] array = new String[Final.size()];
+        Final.toArray(array);
+        Parser.parse(array);
     }
     public static void check_for_sym(String data, int current_char)
     {
         if(Arrays.asList(symbols).contains(String.valueOf(data.charAt(current_char))))
         {
-            System.out.println("SYM: "+data.charAt(current_char));
+            //System.out.println("SYM: "+data.charAt(current_char));
             Final.add(String.valueOf(data.charAt(current_char)));
-            System.out.println("END");
+            //Final.add("END");
+            //System.out.println("END");
             current_char += 1;
             check_for_int(data, current_char);
         }
@@ -71,7 +75,7 @@ public class Lexer
         {
             if(current_char == data.length())
             {
-                System.out.println("END OF LINE");
+                //System.out.println("END OF LINE");
                 Final.add("ENDOFLINE");
                 System.out.println(Final);
             }
@@ -80,39 +84,45 @@ public class Lexer
             check_for_str(data, current_char);
             }
         }
+        String[] array = new String[Final.size()];
+        Final.toArray(array);
+        Parser.parse(array);
     }
     public static void check_for_str(String data, int current_char)
     {
         if(Arrays.asList(chars).contains(String.valueOf(data.charAt(current_char))))
         {
-            System.out.println("STR: "+data.charAt(current_char));
+            //System.out.println("STR: "+data.charAt(current_char));
             Final.add(String.valueOf(data.charAt(current_char)));
             current_char += 1;
             check_for_str(data, current_char);
         }
         else if(String.valueOf(data.charAt(current_char)).equals(" "))
         {
-            System.out.println("END");
+            //System.out.println("END");
             Final.add("END");
             current_char += 1;
             check_for_str(data, current_char);
         }
         else
         {
-            System.out.println("END");
+            //System.out.println("END");
             //check_for_sym(data, current_char);
             if(current_char == data.length())
             {
-                System.out.println("END OF LINE");
+                //System.out.println("END OF LINE");
                 Final.add("ENDOFLINE");
                 System.out.println(Final);
             }
             else
             {
-                System.out.println("REROLLING");
+                //System.out.println("REROLLING");
                 check_for_int(data, current_char);
             }
         }
-        Parser.parse(Final);
+
+        String[] array = new String[Final.size()];
+        Final.toArray(array);
+        Parser.parse(array);
     }
 }
