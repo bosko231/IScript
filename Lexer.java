@@ -37,7 +37,7 @@ public class Lexer
             else
             {
                 //System.out.println("END");
-                Final.add("END");
+                Final.add("|");
 
                 if(current_char == data.length())
                 {
@@ -54,7 +54,7 @@ public class Lexer
         catch(Exception e)
         {
             //System.out.println("END");
-            Final.add("END");
+            Final.add("|");
         }
         String[] array = new String[Final.size()];
         Final.toArray(array);
@@ -100,7 +100,7 @@ public class Lexer
         else if(String.valueOf(data.charAt(current_char)).equals(" "))
         {
             //System.out.println("END");
-            Final.add("END");
+            Final.add("|");
             current_char += 1;
             check_for_str(data, current_char);
         }
